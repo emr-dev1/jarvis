@@ -7,8 +7,6 @@ const Tile = styled.div`
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 1;
-    min-height: -webkit-min-content;
-    min-height: -moz-min-content;
     min-height: min-content;
 
     ${({ isAncestor }) => {

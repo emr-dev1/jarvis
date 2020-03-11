@@ -7,12 +7,12 @@ const Column = styled.div`
     flex-grow: 0;
     flex-shrink: 0;
     padding: 0.75em;
-    width: ${({ width }) => width};
+    width: ${({ width }) => `${width}`};
 `;
 
 const ColumnComponent = (props) => {
     let width = props.width;
-    
+
     if (width < 0) {
         width = 0
     }

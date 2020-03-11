@@ -5,7 +5,7 @@ import App from './App';
 const RootComponent = () => {
     return (
         <App>
-            Router Metrics
+            Hello
         </App>
     )
 }

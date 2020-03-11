@@ -1,12 +1,21 @@
 import React from 'react';
 
-import { App_div } from './AppStyles';
+import {
+    Card,
+    Container,
+    Column,
+} from '../components'
 
 const AppComponent = () => {
     return (
-        <App_div>
-            Hello
-        </App_div>
+        <Container>
+            <Column width={4}>
+                TEST
+            </Column>
+            <Column width={4}>
+                TEST
+            </Column>
+        </Container>
     )
 }
 
