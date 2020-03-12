@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '.';
+import Dropdown from './DropdownComponent';
 
 export default {
 	component: Dropdown,
@@ -8,7 +8,7 @@ export default {
 
 export const dropdown = () => (
 	<Dropdown
-		name={'dropper'}
+		name={'Open Me'}
 		contents={['One', 'Two', 'Three']}
 	/>
 );

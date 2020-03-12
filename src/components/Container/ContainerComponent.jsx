@@ -8,7 +8,7 @@ const Container = styled.div`
     width: auto;
 `;
 
-const ContainerFluid = styled(Container)`
+const ContainerFluid = styled.div`
     max-width: none;
     padding-left: 32px;
     padding-right: 32px;
@@ -21,14 +21,14 @@ const ContainerComponent = ({ fluid, children }) => {
             <ContainerFluid>
                 {children}
             </ContainerFluid>
-        )
-    }
+        );
+    };
 
     return (
         <Container>
             {children}
         </Container>
-    )
-}
+    );
+};
 
 export default ContainerComponent;

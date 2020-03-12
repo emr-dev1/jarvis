@@ -8,7 +8,7 @@ const Dropdown = styled.div`
     vertical-align: top;
 `;
 
-const DropdownMenu = styled.div`
+const DropdownMenu = styled.a`
     display: none;
     left: 0;
     min-width: 12rem;
@@ -32,7 +32,7 @@ const DropdownContent = styled.div`
     padding-top: 0.5rem;
 `;
 
-const DropdownItem = styled.div`
+const DropdownItem = styled.a`
     color: #4a4a4a;
     display: block;
     font-size: 0.875rem;
@@ -58,8 +58,8 @@ const DropdownComponent = ({ name, contents }) => {
 
     return (
         <Dropdown onClick={handleClick}>
+            <span>{name}</span>
             <DropdownMenu isActive={open}>
-                <span>{name}</span>
                 {contents && (
                     <DropdownContent>
                         { renderDropdownContent() }
