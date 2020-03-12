@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -32,7 +32,7 @@ const DropdownContent = styled.div`
     padding-top: 0.5rem;
 `;
 
-const DropdownItem = styled.div`
+const DropdownItem = styled.a`
     color: #4a4a4a;
     display: block;
     font-size: 0.875rem;
@@ -41,20 +41,39 @@ const DropdownItem = styled.div`
     position: relative;
 `;
 
-const DropdownDivider = styled.div`
-    background-color: #ededed;
-    border: none;
-    display: block;
-    height: 1px;
-    margin: 0.5rem 0;
-`;
+const DropdownComponent = ({ name, contents, hasDivider }) => {
+    const [open, setOpen] = useState(false);
 
-const DropdownComponent = (props) => {
-    
-}
+    const handleClick = () => {
+        setOpen(!open);
+    };
+
+    const renderDropdownContent = () => (
+        contents.map((content, idx, arr) => (
+            <DropdownItem key={content}>
+                {content}
+            </DropdownItem>
+        ))
+    );
+
+    return (
+        <Dropdown onClick={handleClick}>
+            <DropdownMenu isActive={open}>
+                <span>{name}</span>
+                {contents && (
+                    <DropdownContent>
+                        { renderDropdownContent() }
+                    </DropdownContent>
+                )}
+            </DropdownMenu>
+        </Dropdown>
+    );
+};
 
 DropdownComponent.propTypes = {
-    
-}
+    name: PropTypes.string,
+    contents: PropTypes.array,
+    hasDivider: PropTypes.bool
+};
 
 export default DropdownComponent;

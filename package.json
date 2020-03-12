@@ -10,7 +10,8 @@
     "start:prod": "webpack-dev-server --config ./config/webpack.config.prodlocal.js",
     "build": "npm run build:prod",
     "build:dev": "webpack --config ./config/webpack.config.dev.js",
-    "build:prod": "webpack --config ./config/webpack.config.prod.js"
+    "build:prod": "webpack --config ./config/webpack.config.prod.js",
+    "storybook": "start-storybook"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.3.14",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",
