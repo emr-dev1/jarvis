@@ -2,11 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-class NotificationComponent extends React.Component {
-	static defaultProps = {
-		position: 'top-right',
-		onClick: PropTypes.func,
-	};
+const Notification = styled.div`
+    position: fixed;
+    width: 20em;
+
+    ${({ topRight }) => {
+        return `top:20px;bottom:20px;right:20px;`;
+    }}
+    ${({ topLeft }) => {
+       return `top:20px;bottom:auto;right:20px;`;
+    }}
+    ${({ bottomLeft }) => {
+        return `top:20px;bottom:auto;left:20px;`;
+    }}
+    ${({ bottomRight }) => {
+        return `top:auto;bottom:20px;right:20px`;
+    }}
+`;
+
+const NotificationItem = styled.div`
+
+`;
+
+const NotificationComponent = () => {
 
 	static propTypes = {
 		position: PropTypes.string,
