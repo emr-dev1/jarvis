@@ -6,9 +6,11 @@ export default {
 	title: 'Dropdown',
 };
 
-export const dropdown = () => (
-	<Dropdown
-		name={'Open Me'}
-		contents={['One', 'Two', 'Three']}
-	/>
+export const DropdownSample = () => (
+	<React.Fragment>
+		<Dropdown
+			name={'Open Me'}
+			contents={['One', 'Two', 'Three']}
+		/>
+	</React.Fragment>
 );

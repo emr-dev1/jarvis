@@ -1,14 +1,14 @@
 import React from 'react';
 import CardComponent from './CardComponent';
+import Column from '../Column/ColumnComponent';
 
 export default {
 	component: CardComponent,
-	title: 'CardComponent',
+	title: 'Card',
 };
 
-export const card = () => (
-	<CardComponent
-		name={'Open Me'}
-		contents={['One', 'Two', 'Three']}
-	/>
+export const InactiveCard = () => (
+	<CardComponent>
+		Lorem Ipsum
+	</CardComponent>
 );
