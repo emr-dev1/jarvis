@@ -1,30 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import DOMHandler from '../utils/DOMHandler';
 
-const Notification = styled.div`
-    position: fixed;
-    width: 20em;
+import {
+	Notification,
+	NotificationItem
+} from './NotificationStyles';
 
-    ${({ topRight }) => {
-        return `top:20px;bottom:20px;right:20px;`;
-    }}
-    ${({ topLeft }) => {
-       return `top:20px;bottom:auto;right:20px;`;
-    }}
-    ${({ bottomLeft }) => {
-        return `top:20px;bottom:auto;left:20px;`;
-    }}
-    ${({ bottomRight }) => {
-        return `top:auto;bottom:20px;right:20px`;
-    }}
-`;
+let messageIndex = 0;
 
-const NotificationItem = styled.div`
-
-`;
-
-const NotificationComponent = () => {
+class NotificationComponent extends React.Component {
 
 	static propTypes = {
 		position: PropTypes.string,
@@ -39,8 +24,27 @@ const NotificationComponent = () => {
 		}
 	}
 
-	show() {
+	show(content) {
+		if (content) {
+			let newMessages;
 
+			if (Array.isArray(content)) {
+				for (let i = 0; i < content.length; i++) {
+					content[i].id = messageIndex++;
+					newMessages = this.state.messages ? [...this.state.messages, ...content] : [content];
+				}
+			}
+			else {
+				content.id = messageIndex++;
+				newMessages = this.state.messages ? [...this.state.messages, value] : [value];
+			}
+
+			this.setState({
+				messages: newMessages,
+			});
+
+			this.container.style.zIndex = String(this.props.baseZIndex + DOMHandler.generateZIndex());
+		}
 	}
 
 	clear() {
@@ -49,10 +53,18 @@ const NotificationComponent = () => {
 		});
 	}
 
-	onClose() {
+	onClose(message) {
 		// filter the messages in the state
 		// set the filtered messages as state messages
 		// check if a remove function exists, execute if it does
+		let newMessages = this.state.messages.filter(msg = msg.id !== message.id);
+		this.setState({
+			messsages: newMessages,
+		});
+
+		if (this.props.onRemove) {
+			this.props.onRemove(message);
+		}
 	}
 
 	render() {
@@ -60,7 +72,7 @@ const NotificationComponent = () => {
 			<Notification>
 
 			</Notification>
-		)
+		);
 	}
 };
 
